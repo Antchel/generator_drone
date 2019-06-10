@@ -1,0 +1,71 @@
+JSTP    : 1.0.0
+Name    : DroneGen
+Version : 1.0.0
+BasePath: gen
+
+Title   : Генератор для дрона
+Desc    : Генератор для дрона
+
+Paths   :
+#------------------------------------------------------------------------#
+#                             Интерфейс управления                       #
+#------------------------------------------------------------------------#
+    info:
+        Title   : Описание устройства
+        Result  : DeviceCard
+    reset:
+        Title   : Сброс настроек частоты и мощности
+        Desc    : Сброс настроек частоты и мощности
+        Result  : Bool
+    set:
+        Title   : Установить частоту и мощность
+        Args    : FreqPowParams
+        Result  : FreqPowParams
+    get:
+        Title   : Показать частоту и мощность
+        Result  : FreqPowParams
+    set_freq:
+        Title   : Установить частоту
+        Desc    : Установить частоту от 500 кГц до 400 МГц в Гц
+        Args    : Integer
+        Result  : Integer
+    get_freq:
+        Title   : Считать частоту в Гц
+        Result  : Integer
+    set_pow:
+        Title   : Установить мощность
+        Desc    : Установить мощность (от 001 до 511) 8,5 единиц ~ 1 дБм
+        Args    : Integer
+        Result  : Integer
+    get_pow:
+        Title   : Считать мощность (от 001 до 511) 8,5 единиц ~ 1 дБм
+        Result  : Integer
+
+
+#------------------------------------------------------------------------#
+#                             Описания типов                             #
+#------------------------------------------------------------------------#
+Types    :
+    DeviceCard:
+        Type    : Object
+        Title   : Карточка устройства
+        Properties:
+            name:
+                Type: String
+                Title: Название устройства
+            sv:
+                Type: String
+                Title: Версия прошивки
+            hv:
+                Type: String
+                Title: Версия платы
+    FreqPowParams:
+        Type    : Object
+        Title: Аргументы метода set
+        Properties:
+            freq:
+                Type: Integer
+                Title: Частота от 500 кГц до 400 МГц в Гц
+            pow:
+                Type: Integer
+                Title: Мощность (от 001 до 511) 8,5 единиц ~ 1 дБм
